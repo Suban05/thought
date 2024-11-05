@@ -38,7 +38,7 @@ jobs:
         run: bin/rubocop -f github
 
       - name: Lint Slim files
-        run: slim-lint app/views/
+        run: bundle exec slim-lint app/views/
 
   test:
     runs-on: ubuntu-latest
