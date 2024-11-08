@@ -70,3 +70,5 @@ gem "sentry-ruby"
 gem "sentry-rails"
 gem "slim_lint"
 gem "minitest-power_assert"
+
+gem "devise", "~> 4.9"
