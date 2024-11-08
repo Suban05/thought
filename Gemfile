@@ -72,3 +72,4 @@ gem "slim_lint"
 gem "minitest-power_assert"
 
 gem "devise", "~> 4.9"
+gem "slim"
