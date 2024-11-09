@@ -1,13 +1,9 @@
-div id="#{dom_id post}"
-  p
-    strong Title:
-    =< post.title
-  p
-    strong Body:
-    =< post.body
-  p
-    strong User:
-    =< post.user_id
-  p
-    strong Category:
-    =< post.category_id
+.col-md-12
+  .card.mb-3
+    .card-body
+      h2.h5.card-title
+        = link_to post_path(post), class: "link-dark text-decoration-none" do
+          = post.title
+
+      .card-text.mb-2
+        = truncate(post.body, length: 300)
