@@ -1,7 +1,9 @@
 .container.mb-2
   .d-flex.flex-wrap.align-items-center.py-2.border-bottom
     .navbar.navbar-expand-md.navbar-light.me-auto
-
+        = link_to root_path, class: 'navbar-brand me-md-4' do
+            p.navbar-brand Коллективный блог
+    .navbar.navbar-expand-md.navbar-light.me-auto
     ul.nav.nav-pills
       - if user_signed_in?
         li.nav-item.me-2
