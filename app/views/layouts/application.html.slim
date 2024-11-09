@@ -16,9 +16,11 @@ html
     = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
   body.d-flex.flex-column.h-100
     = render "layouts/header"  
-    p.notice
-      = notice
-    p.alert
-      = alert        
+    - if notice.present?
+      p.notice
+        = notice
+    - if alert.present?        
+      p.alert
+        = alert        
     div.container.my-4  
       = yield
