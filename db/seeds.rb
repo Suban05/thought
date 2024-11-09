@@ -1,13 +1,21 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require "bcrypt"
 
 [ "Музыка", "Кино" ].each do |category|
-  Category.create!(name: category)
+  Category.create(name: category)
+end
+
+5.times do
+  User.create(
+    email: Faker::Internet.email,
+    password: BCrypt::Password.create('password')
+  )
+end
+
+5.times do
+  Post.create(
+    title: Faker::Lorem.sentence,
+    body: Faker::Lorem.paragraph_by_chars(number: 500),
+    category_id: (1..2).to_a.sample,
+    user_id: (1..5).to_a.sample,
+  )
 end
