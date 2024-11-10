@@ -30,7 +30,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_difference("PostComment.count", 1) do
       post post_comments_url(@post), params: { post_comment: { content: @comment.content } }
     end
-    assert_redirected_to comment_url(PostComment.last)
+    assert_redirected_to post_url(@post)
   end
 
   test "should not create comment when user is unsigned" do
@@ -61,7 +61,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     patch comment_url(@comment), params: { post_comment: { content: "hello" } }
     @comment.reload
     assert { "hello" == @comment.content }
-    assert_redirected_to comment_url(@comment)
+    assert_redirected_to post_url(@comment.post)
   end
 
   test "should not update post when user is unsigned" do
@@ -75,7 +75,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
       delete comment_url(@comment)
     end
 
-    assert_redirected_to posts_url
+    assert_redirected_to post_url(@post)
   end
 
   test "should not destroy post when user is unsigned" do
