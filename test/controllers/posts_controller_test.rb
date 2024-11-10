@@ -27,7 +27,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test "should create post" do
     sign_in @user
     assert_difference("Post.count", 1) do
-      post posts_url, params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, user_id: @post.user_id } }
+      post posts_url, params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, creator_id: @post.creator_id } }
     end
 
     assert_redirected_to post_url(Post.last)
@@ -35,7 +35,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should not create post when user is unsigned" do
     assert_difference("Post.count", 0) do
-      post posts_url, params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, user_id: @post.user_id } }
+      post posts_url, params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, creator_id: @post.creator_id } }
     end
     assert_redirected_to new_user_session_path
   end
@@ -58,12 +58,12 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update post" do
     sign_in @user
-    patch post_url(@post), params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, user_id: @post.user_id } }
+    patch post_url(@post), params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, creator_id: @post.creator_id } }
     assert_redirected_to post_url(@post)
   end
 
   test "should not update post when user is unsigned" do
-    patch post_url(@post), params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, user_id: @post.user_id } }
+    patch post_url(@post), params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, creator_id: @post.creator_id } }
     assert_redirected_to new_user_session_path
   end
 

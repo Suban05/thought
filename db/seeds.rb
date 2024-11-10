@@ -16,6 +16,6 @@ end
     title: Faker::Lorem.sentence,
     body: Faker::Lorem.paragraph_by_chars(number: 500),
     category_id: (1..2).to_a.sample,
-    user_id: (1..5).to_a.sample,
+    creator_id: (1..5).to_a.sample,
   )
 end
