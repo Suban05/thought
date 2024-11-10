@@ -5,8 +5,7 @@
   p
     = @post.body
   p
-  
-  .d-flex.justify-content-between.mt-5  
+  .d-flex.justify-content-between.mt-5
     span.me-2 = current_user.email
     span = time_ago_in_words(@post.created_at)
 
