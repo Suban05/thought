@@ -4,11 +4,11 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: %i[ show edit update destroy ]
 
   def index
-    @comments = @post.comments.all
+    @comments = @post.comments.roots.all
   end
 
   def new
-    @comment = @post.comments.new
+    @comment = PostComment.build
   end
 
   def edit
@@ -52,6 +52,6 @@ class CommentsController < ApplicationController
   end
 
   def comments_params
-    params.require(:post_comment).permit(:content)
+    params.require(:post_comment).permit(:content, :parent_id)
   end
 end

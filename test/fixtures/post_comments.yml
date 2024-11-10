@@ -4,8 +4,10 @@ one:
   content: MyText
   post: one
   user: one
+  ancestry: "/"
 
 two:
   content: MyText
   post: two
   user: two
+  ancestry: "/"

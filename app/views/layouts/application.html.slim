@@ -19,9 +19,9 @@ html
                              type: "module"
   body.d-flex.flex-column.h-100
     = render "layouts/header"
-    - if notice.present?
-      p.notice = notice
-    - if alert.present?
-      p.alert = alert
     .container.my-4
+      - if notice.present?
+        p.notice style="color: green" = notice
+      - if alert.present?
+        p.alert = alert
       = yield

@@ -5,6 +5,8 @@
 
   .form-inputs
     = f.input :content
+    - if post_comment.parent
+      = f.hidden_field :parent_id, value: post_comment.parent.id
 
   .form-actions
     = f.button :submit
