@@ -9,6 +9,6 @@
         = truncate(post.body, length: 300)
       .d-flex
         .text-right.small.text-muted.mt-auto
-          .span.me-2 = current_user.email
+          .span.me-2 = post.creator.email
         .text-right.small.text-muted.mt-auto
           .span.me-2 = time_ago_in_words(post.created_at)

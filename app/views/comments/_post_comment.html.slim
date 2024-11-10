@@ -2,7 +2,7 @@
 .col-md-12
   .card.mb-3
     .card-header.d-flex.justify-content-between
-      .span.me-2 = current_user.email
+      .span.me-2 = comment.user.email
       .span.me-2 = comment.created_at.to_fs(:long)
     .card-body
       .card-text.mb-2
