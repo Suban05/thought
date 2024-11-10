@@ -1,6 +1,9 @@
 - data = { bs_target: "#response_comment-#{comment.id}", bs_toggle: "collapse" }
 .col-md-12
   .card.mb-3
+    .card-header.d-flex.justify-content-between
+      .span.me-2 = current_user.email
+      .span.me-2 = comment.created_at.to_fs(:long)
     .card-body
       .card-text.mb-2
         = comment.content

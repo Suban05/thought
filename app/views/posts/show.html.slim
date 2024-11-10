@@ -5,6 +5,11 @@
   p
     = @post.body
   p
+  
+  .d-flex.justify-content-between.mt-5  
+    span.me-2 = current_user.email
+    span = time_ago_in_words(@post.created_at)
+
 - if current_user == @post.creator
   div
     => link_to "Edit this post", edit_post_path(@post)
@@ -12,8 +17,9 @@
     =< link_to "Back to posts", posts_path
     = button_to "Destroy this post", @post, method: :delete
 
-= render "comments/form",
-  post_comment: PostComment.build,
-  url: post_comments_path(@post)
+.mt-3
+  = render "comments/form",
+    post_comment: PostComment.build,
+    url: post_comments_path(@post)
 
-= render "comments/comments", comments: @post.comments.roots
+  = render "comments/comments", comments: @post.comments.roots
