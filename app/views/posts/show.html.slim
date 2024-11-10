@@ -1,10 +1,15 @@
 p style="color: green" = notice
 
-== render @post
-
-div
-  => link_to "Edit this post", edit_post_path(@post)
-  '|
-  =< link_to "Back to posts", posts_path
-
-  = button_to "Destroy this post", @post, method: :delete
+.col-12
+  h1.mb-4.mb-lg-5
+    = @post.title
+  p
+  p
+    = @post.body
+  p
+- if current_user == @post.creator
+  div
+    => link_to "Edit this post", edit_post_path(@post)
+    '|
+    = button_to "Destroy this post", @post, method: :delete
+=< link_to "Create comment", new_post_comment_path(@post)
