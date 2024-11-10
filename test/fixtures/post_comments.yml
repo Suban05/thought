@@ -11,3 +11,15 @@ two:
   post: two
   user: two
   ancestry: "/"
+
+nested:
+  content: commented comment
+  user: one
+  post: one
+  ancestry: /<%= ActiveRecord::FixtureSet.identify(:two) %>/
+
+deep_nested:
+  content: deep comment
+  user: one
+  post: one
+  ancestry: /<%= [ActiveRecord::FixtureSet.identify(:with_comments), ActiveRecord::FixtureSet.identify(:nested)].join('/') %>/  
