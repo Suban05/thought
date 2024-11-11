@@ -64,7 +64,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to new_user_session_path
   end
 
-  test "should update post" do
+  test "should update comment" do
     sign_in @user
     patch comment_url(@comment), params: { post_comment: { content: "hello" } }
     @comment.reload
@@ -72,12 +72,12 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_url(@comment.post)
   end
 
-  test "should not update post when user is unsigned" do
+  test "should not update comment when user is unsigned" do
     patch post_url(@post), params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, creator_id: @post.creator_id } }
     assert_redirected_to new_user_session_path
   end
 
-  test "should destroy post" do
+  test "should destroy comment" do
     sign_in @user
     assert_difference("PostComment.count", -1) do
       delete comment_url(@comment)
@@ -86,7 +86,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_url(@post)
   end
 
-  test "should not destroy post when user is unsigned" do
+  test "should not destroy comment when user is unsigned" do
     assert_difference("PostComment.count", 0) do
       delete post_url(@comment)
     end
