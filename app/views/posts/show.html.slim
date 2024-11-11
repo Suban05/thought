@@ -9,17 +9,15 @@
     span.me-2 = time_ago_in_words(@post.created_at)
     span.me-2
       - if @post.liked_users.include?(current_user)
-        - link = like_path(current_user.likes.find_by(post_id: @post.id))
-        - turbo_method = "delete"
-        - html_class = "bi bi-hand-thumbs-up-fill"
+        = link_to like_path(current_user.likes.find_by(post_id: @post.id)),
+          data: { turbo_method: "delete" } do
+          span.me-2 = @post.likes.count
+          i.bi.bi-hand-thumbs-up-fill
       - else
-        - link = post_likes_path(@post)
-        - turbo_method = "post"
-        - html_class = "bi bi-hand-thumbs-up"
-
-      = link_to link, data: { turbo_method: turbo_method } do
-        span.me-2 = @post.likes.count
-        i class=html_class
+        = link_to post_likes_path(@post),
+          data: { turbo_method: "post" } do
+          span.me-2 = @post.likes.count
+          i.bi.bi-hand-thumbs-up
 
 - if current_user == @post.creator
   div
