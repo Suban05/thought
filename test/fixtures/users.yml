@@ -12,6 +12,10 @@ two:
   email: two@test.com
   encrypted_password: test
 
+three:
+  email: three@test.com
+  encrypted_password: test
+
 john:
   email: john@test.com
   encrypted_password: test  

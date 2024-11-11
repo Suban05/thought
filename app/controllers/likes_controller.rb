@@ -12,7 +12,9 @@ class LikesController < ApplicationController
   def destroy
     like = PostLike.find(params[:id])
     post = like.post
-    like.destroy!
+    if like.user == current_user
+      like.destroy!
+    end
     redirect_to post
   end
 

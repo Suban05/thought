@@ -2,23 +2,35 @@
   h1.mb-4.mb-lg-5
     = @post.title
   p
-  p
     = @post.body
-  p
-  .d-flex.justify-content-between.mt-5
+
+  .d-flex
     span.me-2 = @post.creator.email
-    span = time_ago_in_words(@post.created_at)
+    span.me-2 = time_ago_in_words(@post.created_at)
+    span.me-2
+      - if @post.liked_users.include?(current_user)
+        - link = like_path(current_user.likes.find_by(post_id: @post.id))
+        - turbo_method = "delete"
+        - html_class = "bi bi-hand-thumbs-up-fill"
+      - else
+        - link = post_likes_path(@post)
+        - turbo_method = "post"
+        - html_class = "bi bi-hand-thumbs-up"
+
+      = link_to link, data: { turbo_method: turbo_method } do
+        span.me-2 = @post.likes.count
+        i class=html_class
 
 - if current_user == @post.creator
   div
-    => link_to "Edit this post", edit_post_path(@post)
-    '|
-    =< link_to "Back to posts", posts_path
+    = link_to "Edit this post", edit_post_path(@post)
+    '|'
+    = link_to "Back to posts", posts_path
     = button_to "Destroy this post", @post, method: :delete
 
 .mt-3
   = render "comments/form",
-    post_comment: PostComment.build,
+    post_comment: PostComment.new,
     url: post_comments_path(@post)
 
   = render "comments/comments", comments: @post.comments.roots

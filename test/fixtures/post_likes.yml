@@ -5,5 +5,9 @@ one:
   user: one
 
 two:
-  post: two
+  post: one
+  user: john
+
+three:
+  post: one
   user: two
