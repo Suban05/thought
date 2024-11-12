@@ -1,0 +1,6 @@
+en:
+  layouts:
+    header:
+      new_post: New post
+      sign_in: Log in
+      sign_up: Sign up
