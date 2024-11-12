@@ -1,0 +1,13 @@
+ru:
+  posts:
+    new:
+        title: Новый пост
+
+    show:
+      comments: Комментарии
+
+    create:
+      success: Пост был создан.
+
+    destroy:
+      success: Пост был удален.        

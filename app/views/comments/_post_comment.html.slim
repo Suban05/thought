@@ -11,7 +11,7 @@
       = render "comments/comments", comments: comment.children
 
       .card-footer.border-0
-        = link_to "Ответить", "#",
+        = link_to t(".reply"), "#",
           class: "fs-6 text-decoration-underline text-lowercase collapsed",
           type: "button",
           "aria-expanded" => false,

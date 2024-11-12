@@ -8,11 +8,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @user = users(:john)
   end
 
-  test "should get index" do
-    get posts_url
-    assert_response :success
-  end
-
   test "should get new" do
     sign_in @user
     get new_post_url
@@ -43,28 +38,6 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test "should show post" do
     get post_url(@post)
     assert_response :success
-  end
-
-  test "should get edit" do
-    sign_in @user
-    get edit_post_url(@post)
-    assert_response :success
-  end
-
-  test "should not get edit when user is unsigned" do
-    get edit_post_url(@post)
-    assert_redirected_to new_user_session_path
-  end
-
-  test "should update post" do
-    sign_in @user
-    patch post_url(@post), params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, creator_id: @post.creator_id } }
-    assert_redirected_to post_url(@post)
-  end
-
-  test "should not update post when user is unsigned" do
-    patch post_url(@post), params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, creator_id: @post.creator_id } }
-    assert_redirected_to new_user_session_path
   end
 
   test "should destroy post" do

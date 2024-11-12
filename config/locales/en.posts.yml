@@ -1,0 +1,13 @@
+en:
+  posts:
+    new:
+        title: New post
+
+    show:
+      comments: Comments
+
+    create:
+      success: Post was created.
+
+    destroy:
+      success: Post was destroyed.        

@@ -1,44 +1,22 @@
 class CommentsController < ApplicationController
-  before_action :authenticate_user!, except: %i[ index show ]
-  before_action :set_post, only: %i[index create new]
-  before_action :set_comment, only: %i[ show edit update destroy ]
-
-  def index
-    @comments = @post.comments.roots.all
-  end
-
-  def new
-    @comment = PostComment.build
-  end
-
-  def edit
-  end
+  before_action :authenticate_user!
+  before_action :set_post, only: %i[create]
+  before_action :set_comment, only: %i[ destroy ]
 
   def create
     @comment = @post.comments.build(comments_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to post_path(@post), notice: "Comment was successfully created."
+      redirect_to post_path(@post), notice: t(".create.success")
     else
-      render :new, status: :unprocessable_entity
+      render post_path(@post)
     end
-  end
-
-  def update
-    if @comment.update(comments_params)
-      redirect_to post_path(@comment.post), notice: "Comment was successfully updated."
-    else
-      render :edit, status: :unprocessable_entity
-    end
-  end
-
-  def show
   end
 
   def destroy
     @comment.destroy!
     post = @comment.post
-    redirect_to post_path(post), status: :see_other, notice: "Comment was successfully destroyed."
+    redirect_to post_path(post), status: :see_other, notice: t(".destroy.success")
   end
 
   private

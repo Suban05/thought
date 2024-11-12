@@ -1,0 +1,7 @@
+ru:
+  helpers:
+    submit:
+      post:
+        create: "Создать пост"
+      comment:
+        create: "Создать комментарий"  

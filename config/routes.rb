@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   root "pages#home"
   resources :posts, shallow: true, except: %i[index edit update] do
-    resources :comments
+    resources :comments, only: %i[create destroy]
     resources :likes, only: %i[create destroy]
   end
 end
