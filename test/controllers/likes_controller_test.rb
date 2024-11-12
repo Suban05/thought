@@ -41,7 +41,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   test "should destroy like" do
     sign_in users(:one)
     assert_difference("PostLike.count", -1) do
-      delete like_url(@like)
+      delete post_like_url(@post, @like)
     end
 
     assert_redirected_to post_url(@post)
@@ -49,7 +49,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
 
   test "should not destroy like when user is unsigned" do
     assert_difference("PostLike.count", 0) do
-      delete like_url(@like)
+      delete post_like_url(@post, @like)
     end
     assert_redirected_to new_user_session_path
   end
@@ -57,7 +57,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
   test "should not destroy like of other user" do
     sign_in @user
     assert_difference("PostLike.count", 0) do
-      delete like_url(@like)
+      delete post_like_url(@post, @like)
     end
     assert_redirected_to post_url(@like.post)
   end

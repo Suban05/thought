@@ -35,7 +35,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   test "should destroy comment" do
     sign_in @user
     assert_difference("PostComment.count", -1) do
-      delete comment_url(@comment)
+      delete post_comment_url(@post, @comment)
     end
 
     assert_redirected_to post_url(@post)
@@ -43,7 +43,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test "should not destroy comment when user is unsigned" do
     assert_difference("PostComment.count", 0) do
-      delete post_url(@comment)
+      delete post_comment_url(@post, @comment)
     end
     assert_redirected_to new_user_session_path
   end
