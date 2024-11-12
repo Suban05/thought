@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: %i[ show ]
-  before_action :set_post, only: %i[ show destroy ]
+  before_action :authenticate_user!, except: %i[show]
+  before_action :set_post, only: %i[show destroy]
 
   # GET /posts/1 or /posts/1.json
-  def show
-  end
+  def show; end
 
   # GET /posts/new
   def new
@@ -17,7 +18,7 @@ class PostsController < ApplicationController
     @post.creator = current_user
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: t(".create.success") }
+        format.html { redirect_to @post, notice: t('.create.success') }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -31,19 +32,20 @@ class PostsController < ApplicationController
     @post.destroy!
 
     respond_to do |format|
-      format.html { redirect_to posts_path, status: :see_other, notice: t(".destroy.success") }
+      format.html { redirect_to posts_path, status: :see_other, notice: t('.destroy.success') }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_post
-      @post = Post.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def post_params
-      params.require(:post).permit(:title, :body, :category_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_post
+    @post = Post.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def post_params
+    params.require(:post).permit(:title, :body, :category_id)
+  end
 end

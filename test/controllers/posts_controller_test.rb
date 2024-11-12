@@ -1,4 +1,6 @@
-require "test_helper"
+# frozen_string_literal: true
+
+require 'test_helper'
 
 class PostsControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
@@ -8,49 +10,49 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     @user = users(:john)
   end
 
-  test "should get new" do
+  test 'should get new' do
     sign_in @user
     get new_post_url
     assert_response :success
   end
 
-  test "should not get new when user is unsigned" do
+  test 'should not get new when user is unsigned' do
     get new_post_url
     assert_redirected_to new_user_session_path
   end
 
-  test "should create post" do
+  test 'should create post' do
     sign_in @user
-    assert_difference("Post.count", 1) do
+    assert_difference('Post.count', 1) do
       post posts_url, params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, creator_id: @post.creator_id } }
     end
 
     assert_redirected_to post_url(Post.last)
   end
 
-  test "should not create post when user is unsigned" do
-    assert_difference("Post.count", 0) do
+  test 'should not create post when user is unsigned' do
+    assert_difference('Post.count', 0) do
       post posts_url, params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, creator_id: @post.creator_id } }
     end
     assert_redirected_to new_user_session_path
   end
 
-  test "should show post" do
+  test 'should show post' do
     get post_url(@post)
     assert_response :success
   end
 
-  test "should destroy post" do
+  test 'should destroy post' do
     sign_in @user
-    assert_difference("Post.count", -1) do
+    assert_difference('Post.count', -1) do
       delete post_url(@post)
     end
 
     assert_redirected_to posts_url
   end
 
-  test "should not destroy post when user is unsigned" do
-    assert_difference("Post.count", 0) do
+  test 'should not destroy post when user is unsigned' do
+    assert_difference('Post.count', 0) do
       delete post_url(@post)
     end
     assert_redirected_to new_user_session_path
