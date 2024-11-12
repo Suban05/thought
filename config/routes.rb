@@ -10,10 +10,11 @@ Rails.application.routes.draw do
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
-  # Defines the root path route ("/")
-  root "pages#home"
-  resources :posts, shallow: true do
-    resources :comments
-    resources :likes, only: %i[create destroy]
+  scope "(:locale)", locale: /en|ru/ do
+    root "pages#home"
+    resources :posts, shallow: true do
+      resources :comments
+      resources :likes, only: %i[create destroy]
+    end
   end
 end
