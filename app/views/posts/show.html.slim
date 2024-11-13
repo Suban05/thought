@@ -22,8 +22,8 @@
 
 .mt-3
   span.lead = t('.comments')
-  = render 'comments/form',
+  = render 'posts/comments/form',
     post_comment: PostComment.new,
     url: post_comments_path(@post)
 
-  = render 'comments/comments', comments: @post.comments.roots
+  = render 'posts/comments/comments', comments: @post.comments.roots
