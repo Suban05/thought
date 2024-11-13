@@ -7,7 +7,7 @@ class Posts::CommentsController < Posts::ApplicationController
     if comment.save
       redirect_to post_path(@resource_post), notice: t('.create.success')
     else
-      render post_path(@resource_post)
+      redirect_to post_path(@resource_post)
     end
   end
 

@@ -19,6 +19,14 @@ class Posts::CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to post_url(@post)
   end
 
+  test 'should not create empty comment' do
+    sign_in @user
+    assert_difference('PostComment.count', 0) do
+      post post_comments_url(@post), params: { post_comment: { content: '' } }
+    end
+    assert_redirected_to post_url(@post)
+  end
+
   test 'should create child comment' do
     sign_in @user
     assert_difference('PostComment.count', 1) do
