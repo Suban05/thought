@@ -1,0 +1,20 @@
+en:
+  activerecord:
+    models:
+      post: Post
+      post/comment: Comment
+    attributes:
+      post:
+        title: Title
+        body: Body
+        category: Category
+        creator: Creator
+      post/post_comment:
+        content: Content
+
+    errors:
+      models:
+        post:
+          attributes:
+            title:
+              blank: should be filled

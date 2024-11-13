@@ -1,8 +1,0 @@
-ru:
-  comments:
-    create:
-      success: Комментарий был создан.
-    destroy:
-      success: Комментарий был удален.    
-    post_comment:    
-      reply: Ответить

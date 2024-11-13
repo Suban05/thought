@@ -21,3 +21,24 @@ end
     creator_id: (1..5).to_a.sample
   )
 end
+
+parent_comments = []
+5.times do
+  comment = PostComment.create!(
+    content: Faker::Lorem.sentence,
+    post_id: 1,
+    user_id: (1..5).to_a.sample
+  )
+  parent_comments << comment
+end
+
+parent_comments.each do |parent|
+  2.times do
+    PostComment.create!(
+      content: Faker::Lorem.sentence,
+      post_id: 1,
+      user_id: (1..5).to_a.sample,
+      parent: parent
+    )
+  end
+end

@@ -1,0 +1,25 @@
+ru:
+  activerecord:
+    models:
+      post: Пост
+      post_comment: Комментарий
+      user: "Пользователь"
+    attributes:
+      post:
+        title: Заголовок
+        body: Содержание
+        category_id: Категория
+        creator_id: Автор
+      user:
+        email: "Email"
+        password: "Пароль"
+        password_confirmation: "Подтверждение пароля"  
+      post_comment:
+        content: Содержимое
+
+    errors:
+      messages:
+        blank: "не может быть пустым"
+        invalid: "имеет неверное значение"
+        too_short: "слишком короткий (минимум %{count} символов)"
+        confirmation: "не совпадает"

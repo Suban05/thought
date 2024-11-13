@@ -10,4 +10,12 @@ en:
       success: Post was created.
 
     destroy:
-      success: Post was destroyed.        
+      success: Post was destroyed.   
+
+    comments:
+      create:
+        success: Comment was created.
+      destroy:
+        success: Comment was destroyed.  
+      post_comment:    
+        reply: Reply        
