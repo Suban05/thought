@@ -2,9 +2,9 @@
 
 class Posts::CommentsController < Posts::ApplicationController
   def create
-    @comment = @resource_post.comments.build(comments_params)
-    @comment.user = current_user
-    if @comment.save
+    comment = @resource_post.comments.build(comments_params)
+    comment.user = current_user
+    if comment.save
       redirect_to post_path(@resource_post), notice: t('.create.success')
     else
       render post_path(@resource_post)
