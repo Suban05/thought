@@ -1,4 +1,4 @@
-- data = { bs_target: "#response_comment-#{comment.id}", bs_toggle: "collapse" }
+- data = { bs_target: "#response_comment-#{comment.id}", bs_toggle: 'collapse' }
 .col-md-12
   .card.mb-3
     .card-header.d-flex.justify-content-between
@@ -8,17 +8,17 @@
       .card-text.mb-2
         = comment.content
 
-      = render "comments/comments", comments: comment.children
+      = render 'comments/comments', comments: comment.children
 
       .card-footer.border-0
-        = link_to t(".reply"), "#",
-          class: "fs-6 text-decoration-underline text-lowercase collapsed",
-          type: "button",
-          "aria-expanded" => false,
-          "aria-controls" => "response_comment-#{comment.id}",
-          data:
+        = link_to t('.reply'), '#',
+          class: 'fs-6 text-decoration-underline text-lowercase collapsed',
+          type: 'button',
+          'aria-expanded' => false,
+          'aria-controls' => "response_comment-#{comment.id}",
+          data: data
 
         .ms-2.collapse id="response_comment-#{comment.id}"
-          = render "comments/form",
+          = render 'comments/form',
             post_comment: comment.children.build,
             url: post_comments_path(comment.post)

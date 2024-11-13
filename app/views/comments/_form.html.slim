@@ -1,5 +1,5 @@
 = simple_form_for(post_comment, url: local_assigns[:url]) do |f|
-  = render "shared/errors", form: f
+  = render 'shared/errors', form: f
 
   .form-inputs
     = f.input :content
