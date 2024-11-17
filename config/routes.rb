@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'service-worker' => 'rails/pwa#service_worker', as: :pwa_service_worker
   get 'manifest' => 'rails/pwa#manifest', as: :pwa_manifest
 
-  root 'pages#home'
+  root 'posts#index'
   resources :posts, except: %i[index edit update] do
     scope module: :posts do
       resources :comments, only: %i[create destroy]

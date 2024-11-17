@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: %i[show]
+  before_action :authenticate_user!, except: %i[index show]
   before_action :set_post, only: %i[show destroy]
+
+  def index
+    @posts = Post.all
+  end
 
   # GET /posts/1 or /posts/1.json
   def show; end

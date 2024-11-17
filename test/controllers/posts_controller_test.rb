@@ -57,4 +57,9 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to new_user_session_path
   end
+
+  test 'should get home from index' do
+    get root_path
+    assert_response :success
+  end
 end
