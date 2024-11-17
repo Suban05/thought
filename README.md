@@ -5,7 +5,7 @@
 
 `Collective blog` is an analogue of the [Habr](https://habr.com/) service. Each user can create an entry and post it in one of the general categories. Other users rate and comment on added posts.
 
-# Getting start
+# Getting started
 
 1. Install dependencies:
 
