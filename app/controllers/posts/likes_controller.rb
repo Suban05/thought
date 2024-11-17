@@ -14,7 +14,6 @@ class Posts::LikesController < Posts::ApplicationController
     if like.user == current_user
       like.destroy!
     end
-
     redirect_to @resource_post
   end
 end
