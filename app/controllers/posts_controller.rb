@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.creator = current_user
+
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: t('.create.success') }
