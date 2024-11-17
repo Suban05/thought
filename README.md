@@ -19,6 +19,12 @@ make install
 make start
 ```
 
+2. Run tests
+
+```
+make test
+```
+
 # Demo
 
 https://rails-project-64-0azo.onrender.com
