@@ -26,4 +26,4 @@
     post_comment: PostComment.new,
     url: post_comments_path(@post)
 
-  = render 'posts/comments/comments', comments: @post.comments.roots
+  = render 'posts/comments/comments', comments: @post.comments.includes(:user).roots
