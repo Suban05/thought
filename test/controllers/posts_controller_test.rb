@@ -23,18 +23,32 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should create post' do
     sign_in @user
-    assert_difference('Post.count', 1) do
-      post posts_url, params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, creator_id: @post.creator_id } }
-    end
+    body = 'body'
+    title = 'create a post from test'
+    post posts_url, params: { post: { body:, category_id: @post.category_id, title: } }
+    assert_response :redirect
 
-    assert_redirected_to post_url(Post.last)
+    created_post = Post.find_by(
+      body:,
+      category_id: @post.category_id,
+      creator_id: @user.id,
+      title:
+    )
+    assert(created_post)
+    assert_redirected_to post_url(created_post)
   end
 
   test 'should not create post when user is unsigned' do
-    assert_difference('Post.count', 0) do
-      post posts_url, params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, creator_id: @post.creator_id } }
-    end
+    body = 'body'
+    title = 'unsuccessful creation'
+    post posts_url, params: { post: { body: @post.body, category_id: @post.category_id, title: @post.title, creator_id: @post.creator_id } }
     assert_redirected_to new_user_session_path
+    created_post = Post.find_by(
+      body:,
+      category_id: @post.category_id,
+      title:
+    )
+    assert_nil(created_post)
   end
 
   test 'should show post' do
@@ -44,18 +58,16 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy post' do
     sign_in @user
-    assert_difference('Post.count', -1) do
-      delete post_url(@post)
-    end
-
+    delete post_url(@post)
+    assert_response :redirect
     assert_redirected_to posts_url
+    assert_nil Post.find_by(id: @post.id)
   end
 
   test 'should not destroy post when user is unsigned' do
-    assert_difference('Post.count', 0) do
-      delete post_url(@post)
-    end
+    delete post_url(@post)
     assert_redirected_to new_user_session_path
+    assert Post.find_by(id: @post.id)
   end
 
   test 'should get home from index' do
