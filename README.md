@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/Suban05/rails-project-64/workflows/CI/badge.svg)](https://github.com/Suban05/rails-project-64/actions)
+[![Build Status](https://github.com/Suban05/thought/workflows/CI/badge.svg)](https://github.com/Suban05/rails-project-64/actions)
 
 # Thought
 
